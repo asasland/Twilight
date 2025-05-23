@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "item/wooden_sword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "twilight:sprinting": 1
+      },
+      "model": "item/iron_sword"
+    }
+  ]
+}
