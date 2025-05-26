@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraft.item.ItemStack;
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid ="twilight",bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class PropertyRegistry {
     @SubscribeEvent//物品属性覆盖
     public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
