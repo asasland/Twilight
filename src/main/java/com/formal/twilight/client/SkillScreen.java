@@ -5,6 +5,7 @@ import com.formal.twilight.capability.SkillCapability;
 import com.formal.twilight.capability.SkillType;
 import com.formal.twilight.net.NetworkHandler;
 import com.formal.twilight.net.SkillUpgradePacket;
+import com.formal.twilight.net.TestPingPacket;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.StringTextComponent;
@@ -26,8 +27,7 @@ public class SkillScreen extends Screen {
 
         this.addButton(new Button(this.width / 2 - 60, this.height / 2 + 20, 120, 20,
                 new StringTextComponent("升级移速"), (btn) -> {
-                System.out.println("客户端：发送升级技能请求！");
-                NetworkHandler.INSTANCE.sendToServer(new SkillUpgradePacket(SkillType.SPEED));
+                NetworkHandler.INSTANCE.sendToServer(new TestPingPacket());
         }));
     }
 

@@ -3,6 +3,7 @@ package com.formal.twilight.item;
 import com.formal.twilight.Utils;
 import com.formal.twilight.capability.SkillProvider;
 import com.formal.twilight.client.KeybindHandler;
+import com.sun.jna.platform.win32.WinUser;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemModelsProperties;
@@ -28,7 +29,7 @@ public class PropertyRegistry {
                     new ResourceLocation(Utils.MOD_ID, "size"),
                     (stack, world, entity) -> stack.getCount()
             );
+            KeybindHandler.register();
         });
-
     }
 }
