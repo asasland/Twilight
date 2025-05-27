@@ -13,5 +13,4 @@ public class ItemRegistry {
 
     public static final RegistryObject<Item> magicIngot = ITEMS.register("magic_ingot", MagicIngot::new);
     public static final RegistryObject<Item> newmagicIngot = ITEMS.register("magic_ingot2", NewMagicIngot::new);
-
 }

@@ -4,6 +4,7 @@ import com.formal.twilight.block.BlockRegistery;
 import com.formal.twilight.block.TileEntityTypeRegistry;
 import com.formal.twilight.capability.SkillCapability;
 import com.formal.twilight.item.ItemRegistry;
+import com.formal.twilight.net.NetworkHandler;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,6 +23,6 @@ public class Twilight {
     }
     private void setup(final FMLCommonSetupEvent event) {
         SkillCapability.register();
+        event.enqueueWork(NetworkHandler::register);
     }
-
 }
