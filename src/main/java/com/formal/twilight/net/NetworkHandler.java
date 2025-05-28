@@ -35,7 +35,8 @@ public class NetworkHandler {
                 SkillUpgradePacket::decode,
                 SkillUpgradePacket::handle
         );
-        INSTANCE.registerMessage(nextId(),
+        INSTANCE.registerMessage(
+                nextId(),
                 TestPingPacket.class,
                 TestPingPacket::encode,
                 TestPingPacket::decode,

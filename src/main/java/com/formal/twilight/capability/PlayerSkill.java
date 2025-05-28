@@ -9,11 +9,6 @@ import java.util.Map;
 
 public class PlayerSkill implements IPlayerSkill {
     private final Map<SkillType, Integer> skills = new EnumMap<>(SkillType.class);
-    public PlayerSkill() {
-        for (SkillType type : SkillType.values()) {
-            skills.put(type, 0);
-        }
-    }
 
     @Override
     public Map<SkillType, Integer> getSkillLevels() {
@@ -35,22 +30,23 @@ public class PlayerSkill implements IPlayerSkill {
     public void applyAllAttributes(PlayerEntity player) {
 
         for (Map.Entry<SkillType, Integer> entry : skills.entrySet()) {
-            SkillType type = entry.getKey();
-            int level = entry.getValue();
 
-            if (player.getAttribute(type.attr) == null) continue;
+            int level = skills.get(entry.getKey());
 
-            player.getAttribute(type.attr).removeModifier(type.uuid);
+            if (player.getAttribute(entry.getKey().attr) == null)
+                continue;
 
-            if (level > 0) {
-                AttributeModifier modifier = new AttributeModifier(
-                        type.uuid,
-                        "twilight.skill." + type.name().toLowerCase(),
-                        type.bonus * level,
-                        AttributeModifier.Operation.ADDITION
-                );
-                player.getAttribute(type.attr).addPermanentModifier(modifier);
-            }
+            // 清除旧 modifier
+            player.getAttribute(entry.getKey().attr).removeModifier(entry.getKey().uuid);
+
+            // 即使为 0 也添加，确保属性存在
+            AttributeModifier modifier = new AttributeModifier(
+                    entry.getKey().uuid,
+                    "twilight.skill." + entry.getKey().name().toLowerCase(),
+                    entry.getKey().bonus * level,
+                    AttributeModifier.Operation.ADDITION
+            );
+            player.getAttribute(entry.getKey().attr).addPermanentModifier(modifier);
         }
     }
 }
