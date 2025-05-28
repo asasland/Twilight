@@ -15,14 +15,6 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = Utils.MOD_ID)
 public class PlayerSkillHandler {
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.player.level.isClientSide) return;
-
-        PlayerEntity player = event.player;
-        player.getCapability(SkillCapability.CAP).ifPresent(skill -> skill.applyAllAttributes(player));
-    }
-
-    @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();
         if (!player.level.isClientSide) {

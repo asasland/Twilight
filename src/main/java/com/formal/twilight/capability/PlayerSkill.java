@@ -9,6 +9,11 @@ import java.util.Map;
 
 public class PlayerSkill implements IPlayerSkill {
     private final Map<SkillType, Integer> skills = new EnumMap<>(SkillType.class);
+    public PlayerSkill() {
+        for (SkillType type : SkillType.values()) {
+            skills.put(type, 0);
+        }
+    }
 
     @Override
     public Map<SkillType, Integer> getSkillLevels() {
@@ -28,6 +33,7 @@ public class PlayerSkill implements IPlayerSkill {
 
     @Override
     public void applyAllAttributes(PlayerEntity player) {
+
         for (Map.Entry<SkillType, Integer> entry : skills.entrySet()) {
             SkillType type = entry.getKey();
             int level = entry.getValue();

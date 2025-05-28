@@ -37,9 +37,7 @@ public class SkillUpgradePacket {
                 cap.setSkillLevel(msg.skillType, current + 1);
                 cap.applyAllAttributes(player);
 
-                player.sendMessage(new StringTextComponent(
-                                "技能 [" + msg.skillType.name() + "] 升级到等级 " + (current + 1)),
-                        player.getUUID());
+                player.sendMessage(new StringTextComponent("技能 [" + msg.skillType.name() + "] 升级到等级 " + (current + 1)),player.getUUID());
 
                 System.out.println("✅ 服务端处理 SkillUpgradePacket：" + msg.skillType.name());
             });
