@@ -27,7 +27,7 @@ public class SkillScreen extends Screen {
 
         this.addButton(new Button(this.width / 2 - 60, this.height / 2 + 20, 120, 20,
                 new StringTextComponent("升级移速"), (btn) -> {
-                NetworkHandler.INSTANCE.sendToServer(new TestPingPacket());
+                NetworkHandler.INSTANCE.sendToServer(new SkillUpgradePacket(SkillType.SPEED));
         }));
     }
 
