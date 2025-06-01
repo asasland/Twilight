@@ -42,6 +42,13 @@ public class NetworkHandler {
                 TestPingPacket::decode,
                 TestPingPacket::handle
         );
+        INSTANCE.registerMessage(
+                nextId(),
+                SkillDowngradePacket.class,
+                SkillDowngradePacket::encode,
+                SkillDowngradePacket::decode,
+                SkillDowngradePacket::handle
+        );
         System.out.println("✅ [NetworkHandler] SkillUpgradePacket 注册成功！");
     }
 }

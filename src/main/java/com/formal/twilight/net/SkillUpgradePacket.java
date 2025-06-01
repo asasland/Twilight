@@ -1,8 +1,10 @@
 package com.formal.twilight.net;
 
+import com.formal.twilight.capability.SkillAttributeApplier;
 import com.formal.twilight.capability.SkillCapability;
 import com.formal.twilight.capability.SkillType;
 import com.formal.twilight.capability.SkillModel;
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.text.StringTextComponent;
@@ -30,13 +32,10 @@ public class SkillUpgradePacket {
             ServerPlayerEntity player = ctx.get().getSender();
             if (player != null) {
                 player.getCapability(SkillCapability.INSTANCE).ifPresent(skill -> {
-                    System.out.println("📩 SkillUpgradePacket 收到，准备处理！");
-
                     int current = skill.getLevel(msg.skillType);
                     skill.setLevel(msg.skillType, current + 1);
-
                     player.sendMessage(new StringTextComponent("技能 [" + msg.skillType.name() + "] 升级到等级 " + (current + 1)), player.getUUID());
-
+                    SkillAttributeApplier.applyAll(player);
                     System.out.println("✅ 服务端处理 SkillUpgradePacket：" + msg.skillType.name());
                 });
             }
