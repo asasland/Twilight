@@ -1,8 +1,6 @@
 package com.formal.twilight.capability;
 
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.util.INBTSerializable;
 

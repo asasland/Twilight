@@ -1,9 +1,6 @@
 package com.formal.twilight.client;
 
 import com.formal.twilight.Utils;
-import com.formal.twilight.capability.SkillType;
-import com.formal.twilight.net.NetworkHandler;
-import com.formal.twilight.net.SkillUpgradePacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,7 +24,6 @@ public class KeybindHandler {
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {
         if (OPEN_SKILL.isDown()) {
-            System.out.println("客户端：打开！");
             Minecraft.getInstance().setScreen(new SkillScreen());
         }
     }
