@@ -19,7 +19,6 @@ public class SkillAttributeApplier {
 
         double speBonus = skill.getLevel(SkillType.SPEED) * 0.005;
         updateModifier(player, Attributes.MOVEMENT_SPEED,SPEED_MODIFIER_ID , speBonus, "Speed Bonus");
-
     }
 
     private static void updateModifier(PlayerEntity player, net.minecraft.entity.ai.attributes.Attribute attr, UUID id, double value, String name) {
