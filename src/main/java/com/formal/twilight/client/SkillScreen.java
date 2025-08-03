@@ -1,5 +1,5 @@
 package com.formal.twilight.client;
-import com.formal.twilight.capability.SkillType;
+import com.formal.twilight.capability.skill.SkillType;
 import com.formal.twilight.net.NetworkHandler;
 import com.formal.twilight.net.SkillDowngradePacket;
 import com.formal.twilight.net.SkillUpgradePacket;

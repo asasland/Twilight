@@ -1,4 +1,4 @@
-package com.formal.twilight.capability;
+package com.formal.twilight.capability.skill;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;

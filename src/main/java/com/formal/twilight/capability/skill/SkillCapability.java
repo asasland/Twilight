@@ -1,4 +1,4 @@
-package com.formal.twilight.capability;
+package com.formal.twilight.capability.skill;
 
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;

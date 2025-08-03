@@ -1,8 +1,8 @@
 package com.formal.twilight.net;
 
-import com.formal.twilight.capability.SkillAttributeApplier;
-import com.formal.twilight.capability.SkillCapability;
-import com.formal.twilight.capability.SkillType;
+import com.formal.twilight.capability.skill.SkillAttributeApplier;
+import com.formal.twilight.capability.skill.SkillCapability;
+import com.formal.twilight.capability.skill.SkillType;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.text.StringTextComponent;
