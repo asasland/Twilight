@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 public class CommonEventHandlers {
     public static ItemFlowerBag itemFlowerBag;  // this holds the unique instance of your block
     public static ContainerType<ContainerFlowerBag> containerTypeFlowerBag;
+
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof PlayerEntity) {

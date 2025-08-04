@@ -44,6 +44,12 @@ public class ContainerFlowerBag extends Container {
     /**
      * 服务器侧构造函数，持有完整的背包数据和物品堆
      */
+
+    public static ContainerFlowerBag createContainerServerSide(int windowID, PlayerInventory playerInventory, ItemStackHandlerFlowerBag bagContents,
+                                                               ItemStack flowerBag) {
+        return new ContainerFlowerBag(windowID, playerInventory, bagContents, flowerBag);
+    }
+
     public ContainerFlowerBag(int windowId, PlayerInventory playerInventory,
                               ItemStackHandlerFlowerBag itemStackHandlerFlowerBag,
                               ItemStack itemStackBeingHeld) {

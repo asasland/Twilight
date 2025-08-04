@@ -12,7 +12,7 @@ public class ContainerRegistry {
     public static final DeferredRegister<ContainerType<?>> CONTAINERS =
             DeferredRegister.create(ForgeRegistries.CONTAINERS, Utils.MOD_ID);
 
-    public static final RegistryObject<ContainerType<ContainerFlowerBag>> FLOWER_BAG_CONTAINER =
+    public static final RegistryObject<ContainerType<ContainerFlowerBag>> CONTAINER_FLOWER_BAG =
             CONTAINERS.register("flower_bag", () ->
                     IForgeContainerType.create(ContainerFlowerBag::new)
             );

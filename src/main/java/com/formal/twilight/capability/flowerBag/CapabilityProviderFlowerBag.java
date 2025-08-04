@@ -1,17 +1,18 @@
 package com.formal.twilight.capability.flowerBag;
 
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class CapabilityProviderFlowerBag implements ICapabilitySerializable<CompoundNBT> {
+public class CapabilityProviderFlowerBag implements ICapabilitySerializable<INBT> {
+
 
     @Nonnull
     @Override
@@ -22,12 +23,12 @@ public class CapabilityProviderFlowerBag implements ICapabilitySerializable<Comp
     }
 
     @Override
-    public CompoundNBT serializeNBT() {
-        return (CompoundNBT) CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(getCachedInventory(), null);
+    public INBT serializeNBT() {
+        return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(getCachedInventory(), null);
     }
 
     @Override
-    public void deserializeNBT(CompoundNBT nbt) {
+    public void deserializeNBT(INBT nbt) {
         CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(getCachedInventory(), null, nbt);
     }
 
