@@ -3,6 +3,7 @@ package com.formal.twilight.item;
 import com.formal.twilight.capability.flowerBag.CapabilityProviderFlowerBag;
 import com.formal.twilight.capability.flowerBag.ContainerFlowerBag;
 import com.formal.twilight.capability.flowerBag.ItemStackHandlerFlowerBag;
+import com.formal.twilight.container.ContainerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -50,60 +51,6 @@ public class ItemFlowerBag extends Item {
         }
         return ActionResult.success(stack);
     }
-
-
-//    @Nonnull
-//    @Override
-//    public ActionResultType onItemUse(ItemStack stack, ItemUseContext ctx) {
-//        World world = ctx.getWorld();
-//        if (world.isRemote()) return ActionResultType.PASS;
-//
-//        BlockPos pos = ctx.getPos();
-//        Direction side = ctx.getFace();
-//        ItemStack itemStack = ctx.getItem();
-//        if (!(itemStack.getItem() instanceof ItemFlowerBag)) throw new AssertionError("Unexpected ItemFlowerBag type");
-//        ItemFlowerBag itemFlowerBag = (ItemFlowerBag)itemStack.getItem();
-//
-//        TileEntity tileEntity = world.getTileEntity(pos);
-//
-//        if (tileEntity == null) return ActionResultType.PASS;
-//        if (world.isRemote()) return ActionResultType.SUCCESS; // always succeed on client side
-//
-//        // check if this object has an inventory- either Forge capability, or vanilla IInventory
-//        IItemHandler tileInventory;
-//        LazyOptional<IItemHandler> capability = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
-//        if (capability.isPresent()) {
-//            tileInventory = capability.orElseThrow(AssertionError::new);
-//        } else if (tileEntity instanceof IInventory) {
-//            tileInventory = new InvWrapper((IInventory)tileEntity);
-//        } else {
-//            return ActionResultType.FAIL;
-//        }
-//
-//        // go through each flower ItemStack in our flower bag and try to insert as many as possible into the tile's inventory.
-//        ItemStackHandlerFlowerBag itemStackHandlerFlowerBag =  itemFlowerBag.getItemStackHandlerFlowerBag(itemStack);
-//        for (int i = 0; i < itemStackHandlerFlowerBag.getSlots(); i++) {
-//            ItemStack flower = itemStackHandlerFlowerBag.getStackInSlot(i);
-//            ItemStack flowersWhichDidNotFit = ItemHandlerHelper.insertItemStacked(tileInventory, flower, false);
-//            itemStackHandlerFlowerBag.setStackInSlot(i, flowersWhichDidNotFit);
-//        }
-//        tileEntity.markDirty();           // make sure that the tileEntity knows we have changed its contents
-//
-//        // we need to mark the flowerbag ItemStack as dirty so that the server will send it to the player.
-//        // This normally happens in ServerPlayerEntity.tick(), which calls this.openContainer.detectAndSendChanges();
-//        // Unfortunately, this code only detects changes to item type, number, or nbt.  It doesn't check the capability instance.
-//        // We could copy the detectAndSendChanges code out and call it manually, but it's easier to mark the itemstack as
-//        //  dirty by modifying its nbt...
-//        //  Of course, if your ItemStack's capability doesn't affect the rendering of the ItemStack, i.e. the Capability is not needed
-//        //  on the client at all, then you don't need to bother to mark it dirty.
-//
-//        CompoundNBT nbt = itemStack.getOrCreateTag();
-//        int dirtyCounter = nbt.getInt("dirtyCounter");
-//        nbt.putInt("dirtyCounter", dirtyCounter + 1);
-//        itemStack.setTag(nbt);
-//
-//        return ActionResultType.SUCCESS;
-//    }
 
 
     private static class ContainerProviderFlowerBag implements INamedContainerProvider {

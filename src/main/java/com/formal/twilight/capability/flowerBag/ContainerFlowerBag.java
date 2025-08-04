@@ -36,6 +36,7 @@ public class ContainerFlowerBag extends Container {
      * 新版构造函数：客户端通过此构造函数创建容器，数据通过 PacketBuffer 同步
      */
     public ContainerFlowerBag(int windowId, PlayerInventory playerInventory, PacketBuffer extraData) {
+
         this(windowId, playerInventory,
                 new ItemStackHandlerFlowerBag(extraData.readInt()), // 从网络数据读取背包槽数
                 ItemStack.EMPTY); // 客户端无持有物信息，传空

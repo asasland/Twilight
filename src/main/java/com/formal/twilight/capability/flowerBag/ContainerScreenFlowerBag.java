@@ -51,5 +51,6 @@ public class ContainerScreenFlowerBag extends ContainerScreen<ContainerFlowerBag
         int edgeSpacingX = (this.width - this.imageWidth) / 2;
         int edgeSpacingY = (this.height - this.imageHeight) / 2;
         this.blit(matrixStack, edgeSpacingX, edgeSpacingY, 0, 0, this.imageWidth, this.imageHeight);
+        System.out.println("正在渲染 FlowerBag 背景纹理");
     }
 }
