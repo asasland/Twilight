@@ -1,6 +1,7 @@
 package com.formal.twilight.capability.flowerBag;
 
 import com.formal.twilight.common.CommonEventHandlers;
+import com.formal.twilight.item.ItemRegistry;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import org.spongepowered.asm.mixin.injection.Inject;
 
 import java.awt.*;
 
@@ -33,7 +35,7 @@ public class ContainerScreenFlowerBag extends ContainerScreen<ContainerFlowerBag
         final float BAG_LABEL_YPOS = 6;
 
 
-        TranslationTextComponent bagLabel = new TranslationTextComponent(CommonEventHandlers.itemFlowerBag.getDescriptionId());
+        TranslationTextComponent bagLabel = new TranslationTextComponent(ItemRegistry.flowerBag.get().getDescriptionId());
         float BAG_LABEL_XPOS = (float) (this.imageWidth / 2 - this.font.width(bagLabel.getString()) / 2);
         this.font.draw(matrixStack, bagLabel, BAG_LABEL_XPOS, BAG_LABEL_YPOS, Color.DARK_GRAY.getRGB());
 
@@ -51,6 +53,5 @@ public class ContainerScreenFlowerBag extends ContainerScreen<ContainerFlowerBag
         int edgeSpacingX = (this.width - this.imageWidth) / 2;
         int edgeSpacingY = (this.height - this.imageHeight) / 2;
         this.blit(matrixStack, edgeSpacingX, edgeSpacingY, 0, 0, this.imageWidth, this.imageHeight);
-        System.out.println("正在渲染 FlowerBag 背景纹理");
     }
 }

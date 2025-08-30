@@ -1,6 +1,8 @@
 package com.formal.twilight.capability.flowerBag;
 
+import com.formal.twilight.client.ClientModEvents;
 import com.formal.twilight.common.CommonEventHandlers;
+import com.formal.twilight.container.ContainerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -42,6 +44,21 @@ public class ContainerFlowerBag extends Container {
                 ItemStack.EMPTY); // 客户端无持有物信息，传空
     }
 
+    public static ContainerFlowerBag createContainerClientSide(int windowID, PlayerInventory playerInventory, net.minecraft.network.PacketBuffer extraData) {
+        // for this example we use extraData for the server to tell the client how many slots for flower itemstacks the flower bag contains.
+        int numberOfFlowerSlots = extraData.readInt();
+
+        try {
+            ItemStackHandlerFlowerBag itemStackHandlerFlowerBag = new ItemStackHandlerFlowerBag(numberOfFlowerSlots);
+
+            // on the client side there is no parent ItemStack to communicate with - we use a dummy inventory
+            return new ContainerFlowerBag(windowID, playerInventory, itemStackHandlerFlowerBag, ItemStack.EMPTY);
+        } catch (IllegalArgumentException iae) {
+            LOGGER.warn(iae);
+        }
+        return null;
+    }
+
     /**
      * 服务器侧构造函数，持有完整的背包数据和物品堆
      */
@@ -54,7 +71,7 @@ public class ContainerFlowerBag extends Container {
     public ContainerFlowerBag(int windowId, PlayerInventory playerInventory,
                               ItemStackHandlerFlowerBag itemStackHandlerFlowerBag,
                               ItemStack itemStackBeingHeld) {
-        super(CommonEventHandlers.containerTypeFlowerBag, windowId);
+        super(ContainerRegistry.CONTAINER_FLOWER_BAG.get(), windowId);
         this.itemStackHandlerFlowerBag = itemStackHandlerFlowerBag;
         this.itemStackBeingHeld = itemStackBeingHeld;
 
@@ -105,7 +122,8 @@ public class ContainerFlowerBag extends Container {
     public boolean stillValid(PlayerEntity player) {
         ItemStack main = player.getMainHandItem();
         ItemStack off = player.getOffhandItem();
-        return (!main.isEmpty() && main == itemStackBeingHeld) || (!off.isEmpty() && off == itemStackBeingHeld);
+        return (!main.isEmpty() && ItemStack.isSame(main, itemStackBeingHeld)) ||
+                (!off.isEmpty() && ItemStack.isSame(off, itemStackBeingHeld));
     }
 
     /**
@@ -142,4 +160,5 @@ public class ContainerFlowerBag extends Container {
         sourceSlot.onTake(player, sourceStack);
         return copyOfSourceStack;
     }
+
 }

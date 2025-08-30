@@ -14,7 +14,6 @@ public class ContainerRegistry {
 
     public static final RegistryObject<ContainerType<ContainerFlowerBag>> CONTAINER_FLOWER_BAG =
             CONTAINERS.register("flower_bag", () ->
-                    IForgeContainerType.create((windowId, inv, data) ->
-                    new ContainerFlowerBag(windowId, inv, data))
+                    IForgeContainerType.create((windowId, inv, data) -> ContainerFlowerBag.createContainerClientSide(windowId, inv, data))
             );
 }
